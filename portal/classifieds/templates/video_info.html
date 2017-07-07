@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+<!doctype html>
+
+<html>
+    <head><meta charset="utf-8"></head>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <body>
+
+{% block content %}
+        <h1>{{video.video_name}}</h1>
+
+        {% if video.image.url %}
+        <img src="{{ video.image.url }}" alt="{{ video.band_name }}" width="400">
+        {% endif %}
+
+
+        <div>
+
+        Region:
+        {% for region in regions %}
+        {{ region }}
+            {% endfor %}</div>
+
+        <div>Ilość osób: {{video.number_of_people}}</div>
+        <div>Cena: {{video.price}}</div>
+        <div>Opis: </br>{{video.content}}</div>
+        <div>Data dodania: {{video.date}}</div>
+
+{% endblock %}
+    </body>
+</html>

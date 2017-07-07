@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+<head><title>Zespół muzyczny | {{band.band_name}}</title></head>
+
+<body>
+
+    {% block content %}
+
+
+
+
+
+
+
+
+
+
+
+
+        <h1>{{band.band_name}}</h1>
+
+        {% if band.image.url %}
+        <img src="{{ band.image.url }}" alt="{{ band.band_name }}" width="400">
+        {% endif %}
+
+        <div>
+        Region:
+        {% for region in regions %}
+        {{ region }}
+            {% endfor %}
+        </div>
+
+        <div>Ilość osób: {{band.number_of_people}}</div>
+        <div>Cena: {{band.price}}</div>
+
+
+        <div>Opis: </br>{{band.content}}</div>
+        <div>Data dodania: {{band.date}}</div>
+
+<div>Komentarze: </div>
+
+
+    {% block comment_list %}
+                {% for comment in comments %}
+        <div>{{comment.text}}<br> - <i>{{comment.author}}</i></div>
+                {% endfor%}
+
+
+    <div>
+    <form method="post">
+    {% csrf_token %}
+    <textarea name="text"></textarea>
+    <input name="author" type="text">
+    <button type="submit" name="send" value="comment">Dodaj komentarz</button>
+    </form>
+    </div>
+
+    <div>
+    <form method="post">
+    {% csrf_token %}
+    <textarea name="massage_band"></textarea>
+    <button type="submit" name="send" value="massage">Wyślij wiadomość</button>
+    </form>
+    </div>
+
+
+
+
+    {% endblock %}
+
+    {% endblock %}
+
+</body>

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+    {% block content %}
+
+        <h1>{{photo.photo_name}}</h1>
+
+
+        {% if photo.image.url %}
+        <img src="{{ photo.image.url }}" alt="{{ photo.band_name }}" width="400">
+        {% endif %}
+
+        <div>
+
+        Region:
+        {% for region in regions %}
+        {{ region }}
+            {% endfor %}</div>
+
+        <div>Ilość osób: {{photo.number_of_people}}</div>
+        <div>Cena: {{photo.price}}</div>
+        <div>Opis: </br>{{photo.content}}</div>
+        <div>Data dodania: {{photo.date}}</div>
+
+    {% endblock %}

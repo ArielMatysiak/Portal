@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+<!doctype html>
+
+<html>
+    <head><meta charset="utf-8"></head>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <body>
+
+{% block content %}
+<h1>Fotografia weselna ({{ photos|length }})</h1>
+
+        <div class="row">
+            {% block photo_list %}
+                {% for photo in photos %}
+                <div class="col-sm-3">
+                    <a href="/photo/{{photo.id}}"><img src="{{ photo.image.url }}" alt="{{ photo.photo_name }}" width=100%></a></br>
+
+                    <a href="/photo/{{photo.id}}">{{photo.photo_name}}</a></br>
+                    <a href="/photo/{{photo.id}}" class="btn btn-info btn-block" role="button">Zobacz więcej</a>
+                    <p></p>
+
+                </div>
+
+                {% endfor %}
+            {% endblock %}
+        </div>
+
+
+{% endblock %}
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+

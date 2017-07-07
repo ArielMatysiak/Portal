@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+<!doctype html>
+
+<html>
+    <head><meta charset="utf-8"></head>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <body>
+
+{% block content %}
+<h1>Zespoły weselne ({{ bands|length }})</h1>
+
+        <div class="row">
+            {% block band_list %}
+                {% for band in bands %}
+                <div class="col-sm-3">
+                    <a href="/band/{{band.id}}"><img src="{{ band.image.url }}" alt="{{ band.band_name }}" width=100%></a></br>
+
+                    <a href="/band/{{band.id}}">{{band.band_name}}</a></br>
+                    <a href="/band/{{band.id}}" class="btn btn-info btn-block" role="button">Zobacz więcej</a>
+                    <p></p>
+
+                </div>
+
+                {% endfor %}
+            {% endblock %}
+        </div>
+
+
+{% endblock %}
+    </body>
+</html>

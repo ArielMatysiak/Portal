@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block content %}
+
+<h2><div>Username: {{ user.username }}</div><h2>
+
+
+<div class="row">
+    <div class="col-sm-4"><h3>Dodaj ogłoszenie w kategorii:<h3></div>
+
+    <div class="col-sm-8"><br>
+        <a href="/add_band" class="btn btn-danger btn-lg">Zespół muzyczny</a><br><br>
+        <a href="/add_photo" class="btn btn-danger btn-lg">Fotograf</a><br><br>
+        <a href="/add_video" class="btn btn-danger btn-lg">Wideofilmowanie</a><br>
+    </div>
+
+
+
+<!--{{ user.email }}-->
+<!--{{ user.first_name }}-->
+<!--{{ user.last_name }}-->
+</div>
+{% endblock %}
+
+</body>
+</html>

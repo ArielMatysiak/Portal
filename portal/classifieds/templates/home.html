@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+
+    <body>
+
+{% block content %}
+
+
+
+    <H2><a href="/band">Zespoły weselne ({{ bands_range|length }})</a></H2>
+
+<p align="center">Losowo wybrane ogłoszenia:</p>
+        <div class="row">
+            {% block band_list %}
+                {% for band in bands %}
+                <div class="col-sm-3">
+                    <a href="/band/{{band.id}}"><img src="{{ band.image.url }}" alt="{{ band.band_name }}" width=100%></a></br>
+
+                    <a href="/band/{{band.id}}">{{band.band_name}}</a></br>
+                    <a href="/band/{{band.id}}" class="btn btn-info btn-block" role="button">Zobacz więcej</a>
+
+                </div>
+
+                {% endfor %}
+            {% endblock %}
+        </div>
+
+
+<H2><a href="/photo">Fotografia weselna ({{ photos_range|length }})</a></H2>
+<p align="center">Losowo wybrane ogłoszenia:</p>
+        <div class="row">
+            {% block photo_list %}
+                {% for photo in photos %}
+                <div class="col-sm-3">
+                    <a href="/photo/{{photo.id}}"><img src="{{ photo.image.url }}" alt="{{ photo.photo_name }}" width=100%></a></br>
+
+                    <a href="/photo/{{photo.id}}">{{photo.photo_name}}</a></br>
+                    <a href="/photo/{{photo.id}}" class="btn btn-info btn-block" role="button">Zobacz więcej</a>
+
+                </div>
+
+                {% endfor %}
+            {% endblock %}
+        </div>
+
+
+
+<H2><a href="/video">Wideofilmowanie ({{ videos_range|length }})</a></H2>
+<p align="center">Losowo wybrane ogłoszenia:</p>
+        <div class="row">
+            {% block video_list %}
+                {% for video in videos %}
+                <div class="col-sm-3">
+                    <a href="/video/{{video.id}}"><img src="{{ video.image.url }}" alt="{{ video.video_name }}" width=100%></a></br>
+
+                    <a href="/video/{{video.id}}">{{video.video_name}}</a></br>
+                    <a href="/video/{{video.id}}" class="btn btn-info btn-block" role="button">Zobacz więcej</a>
+
+                </div>
+
+                {% endfor %}
+            {% endblock %}
+        </div>
+
+{% endblock %}
+
+
+    </body>
+</html>

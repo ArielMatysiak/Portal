@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+<head><title>Zespół muzyczny | {{band.band_name}}</title></head>
+
+<body>
+
+    {% block content %}
+
+    <h1>{{band.band_name}}</h1>
+
+    <div class="row">
+        <div class="col-sm-5" align="center">
+
+            {% if band.image.url %}
+                <p></p><img src="{{ band.image.url }}" alt="{{ band.band_name }}" width="400" >
+            {% endif %}
+        </div>
+
+        <div class="col-sm-7">
+           <div>Region:
+                {% for region in regions %}
+                 {{ region }}
+                {% endfor %}
+            </div>
+
+            <div>
+                Ilość osób: {{band.number_of_people}}
+            </div>
+            <div>
+                Cena: {{band.price}}
+            </div>
+            <div>
+                Data dodania: {{band.date}}
+            </div>
+            <div>
+                Opis: </br>{{band.content}}
+            </div>
+
+        </div>
+
+
+    </div>
+    <br>
+    <hr />
+        <br>
+
+    <div class="row">
+
+        <div class="col-sm-6">
+            Dodaj komentarz:<br>
+        <div>
+            <form method="post">
+            {% csrf_token %}
+            <textarea name="text"></textarea><br>
+            <p>Autor</p><input name="author" type="text"><br><br>
+            <button type="submit" class="btn btn-primary" name="send" value="comment">Dodaj komentarz</button>
+            </form>
+         </div>
+
+        <ul>
+            {% block comment_list %}
+                {% for comment in comments %}
+        <li>{{comment.text}}- <i>{{comment.author}}</i></li>
+        <!--<li>{{comment.text}}- <i>{{user}}</i></li>-->
+                {% endfor%}
+        </ul>
+
+        </div>
+
+
+        <div class="col-sm-6">
+            Wyślij zapytanie do Ogłoszeniodawcy:<br>
+            <form method="post">
+            {% csrf_token %}
+            <textarea name="massage_band"></textarea><br><br>
+            <button type="submit" class="btn btn-primary" name="send" value="massage">Wyślij wiadomość</button>
+            </form>
+
+
+        <ul>
+            {% block massage_band_list %}
+                {% for massage_band in massages_band %}
+        <li>{{massage_band.massage_band}}</li>
+        <!--<li>{{comment.text}}- <i>{{user}}</i></li>-->
+            {% endfor%}
+    </ul>
+
+        </div>
+
+    </div>
+    {% endblock %}
+    {% endblock %}
+
+    {% endblock %}
+
+</body>

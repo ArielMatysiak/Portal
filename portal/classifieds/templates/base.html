@@ -1,0 +1,91 @@
+{% load static %}
+
+<!--<script src="{% static "js/app.js" %}"></script>-->
+<link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}">
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<div class="container" id='wrapper'>
+
+    <div class="row">
+
+        <div class="col-sm-6">
+        <a href="/" title="Home"><img src="/media/images/logo.png" alt="logo"></a>
+
+        </div>
+        <div class="col-sm-6" align="right" padding="20px">
+
+        {% if user.is_authenticated %}
+
+        <p>
+            Witaj, {{ user.username }}. Thanks for logging in.
+            <a href="/accounts/logout" class="btn btn-danger btn-sm">Wyloguj</a>
+            <a href="/profile/{{ user.username }}" class="btn btn-danger btn-sm">Twój Profil</a>
+        </p>
+        {% else %}
+        <p>
+            Welcome, new user. Please log in.
+            <a href="/accounts/login" class="btn btn-danger btn-sm">Zaloguj</a>
+
+        </p>
+        {% endif %}
+        </div>
+
+    </div>
+
+
+
+
+<!--<div>-->
+    <!--<ul class="nav nav-pills">-->
+        <!--<li class="menuname_item"><a href="/" title="Home">Home</a></li>-->
+        <!--<li class="menuname_item"><a href="/band" title="Zespoły weselne">Zespoły weselne</a></li>-->
+        <!--<li class="menuname_item"><a href="/photo" title="Fotografowiet">Fotografowie</a></li>-->
+        <!--<li class="menuname_item"><a href="/video" title="Kamerzyści">Kamerzyści</a></li>-->
+    <!--</ul>-->
+
+<!--</div>-->
+
+
+    <br>
+
+
+<div class="btn-group btn-group-justified">
+  <a href="/" class="btn btn-primary">Home</a>
+  <a href="/band" class="btn btn-primary">Zespoły weselne</a>
+  <a href="/photo" class="btn btn-primary">Fotografowie</a>
+  <a href="/video" class="btn btn-primary">Kamerzyści</a>
+</div>
+
+{% block content %}
+
+{% endblock %}
+
+</div>
+<br>
+<br>
+    <div class="footer" align="center">
+
+        <br>
+        <br>
+        <a href="/" title="Home"><img src="/media/images/logo.png" alt="logo"></a>
+        <br>
+        <br>
+
+        </div>
+
+
+</body>
+</html>
